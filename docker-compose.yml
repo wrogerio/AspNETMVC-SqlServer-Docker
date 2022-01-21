@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  backend:
+  frontend:
+
+services:
+  database:
+    container_name: "app-database"
+    hostname: database
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password12!
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./database:/var/opt/mssql/data
+    restart: always
+    networks:
+      - backend
+
+  web-app:
+    container_name: "app-web"
+    build:
+      context: ./
+      dockerfile: ./app/dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+    restart: always
+    networks:
+      - frontend
+      - backend

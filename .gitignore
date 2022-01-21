@@ -1,0 +1,7 @@
+.vscode/
+app/bin
+app/obj
+database/*.mdf
+database/*.ndf
+database/*.ldf
+database/*.bin

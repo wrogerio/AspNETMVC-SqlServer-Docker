@@ -1,0 +1,38 @@
+﻿@model IEnumerable<app.Models.Cliente>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col alert alert-info">
+        <h2>Cadastro de Clientes</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>SobreNome</th>
+                    <th>Idade</th>
+                    <th>Endereço</th>
+                    <th>Número</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cliente in Model)
+                {
+                    <tr>
+                        <td>@cliente.Nome</td>
+                        <td>@cliente.Sobrenome</td>
+                        <td>@cliente.Idade</td>
+                        <td>@cliente.Endereco</td>
+                        <td>@cliente.Numero</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
